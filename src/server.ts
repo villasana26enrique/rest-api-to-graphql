@@ -1,3 +1,4 @@
+import { dataSources } from './data/index';
 import { ApolloServer } from 'apollo-server-express';
 import expressPlayground from 'graphql-playground-middleware-express';
 import express from 'express';
@@ -14,7 +15,10 @@ app.use(compression());
 
 const servidor = new ApolloServer({
     schema,
-    introspection: true
+    introspection: true,
+    dataSources: () => ({
+        seasons: new dataSources.SeasonsData()
+    })
 });
 
 servidor.applyMiddleware({app});
