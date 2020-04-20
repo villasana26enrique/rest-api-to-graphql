@@ -1,3 +1,10 @@
 type Query {
-    holaMundo: String!
+    seasonList: [Season!]!
 }
+
+type Season{
+    year: String!
+    url: String!
+    urlMobile: String!
+}
+

@@ -1,9 +1,12 @@
+import { dataSources } from './../data/index';
 import { IResolvers } from "graphql-tools";
 
 const query : IResolvers = {
     Query : {
-        holaMundo(): string {
-            return "Hola Mundo";
+        async seasonList(_: void, __:any, { dataSources } ) {
+            return await dataSources.seasons.getSeasons().then(
+                (data:any) => data.MRData.SeasonTable.Seasons
+            );
         }
     }
 };
