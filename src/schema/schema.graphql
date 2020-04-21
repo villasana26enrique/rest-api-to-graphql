@@ -8,3 +8,27 @@ type Season{
     urlMobile: String!
 }
 
+type Location {
+  lat: String!
+  lng: String!
+  locality: String!
+  country: String!
+}
+
+type Race {
+    season: String!
+    round: String!
+    url: String!
+    name: String!
+    circuit: Circuit!
+    date: String!
+    time: String!
+}
+
+type Circuit {
+  id: String!
+  url: String!
+  name: String!
+  location: Location! 
+}
+
