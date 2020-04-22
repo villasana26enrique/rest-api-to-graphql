@@ -13,6 +13,11 @@ const query : IResolvers = {
             return await dataSources.races.getRaces( year ).then(
                 (data:any) => data.MRData.RaceTable.Races
             );
+        },
+        async selectRace(_: void, { year, round }, { dataSources } ) {
+            return await dataSources.races.getRaceByYear( year, round ).then(
+                (data:any) => data.MRData.RaceTable.Races[0]
+            );
         }
     }
 };

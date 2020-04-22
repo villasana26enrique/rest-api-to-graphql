@@ -1,6 +1,10 @@
 type Query {
+    "Obtiene el listado de todas las Temporadas"
     seasonList: [Season!]!
+    "Muestra las carreras que ocurrieron por año"
     racesByYear(year: String!): [Race!]!
+    "Muestra la información de una carrera en especifico"
+    selectRace(year: String!, round: Int!): Race
 }
 
 type Season{

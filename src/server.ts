@@ -28,7 +28,7 @@ app.get('/', expressPlayground({
 }));
 
 app.get('/', (req, res) => {
-    res.send('API Academia Online en GraphQL');
+    res.send('Rest API to GraphQL');
 });
 
 const PORT = 5300;
@@ -36,5 +36,5 @@ const PORT = 5300;
 const httpServer = createServer(app);
 app.listen(
     { port : PORT },
-    () => console.log(`Hola Mundo API GraphQL http://localhost:${PORT}`)
+    () => console.log(`API GraphQL http://localhost:${PORT}`)
 );
