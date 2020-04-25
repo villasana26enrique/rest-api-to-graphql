@@ -6,9 +6,11 @@ type Query {
     "Muestra la información de una carrera en especifico"
     selectRace(year: String!, round: Int!): Race
     "Lista de Pilotos. Opcionalmente se pueden obtener los pilotos de forma paginada"
-    listOfDrivers(pageElements: Int, page: Int): [Driver!]!,
+    listOfDrivers(pageElements: Int, page: Int): [Driver!]!
     "Lista de Pilotos por Temporada. De manera opcional se pueden obtener los pilotos de una carrera en especifico de esa temporada"
-    driversBySeason(year: String!, race: Int): [Driver!]! 
+    driversBySeason(year: String!, race: Int): [Driver!]!
+    "información de un Piloto seleccionado por ID"
+    driverInformation(id: ID!): Driver 
 }
 
 type Season{
@@ -36,7 +38,7 @@ type Location {
 }
 
 type Circuit {
-  id: String!
+  id: ID!
   url: String!
   urlMobile: String!
   name: String!
@@ -44,11 +46,12 @@ type Circuit {
 }
 
 type Driver {
-  id: String!
+  id: ID!
   url: String!
   urlMobile: String!
   name: String!
   dateOfBirth: String!
+  age: Int!
   nationality: String!
   code: String
   permanentNumber: String

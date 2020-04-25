@@ -29,6 +29,11 @@ const query : IResolvers = {
             return await dataSources.drivers.getDriversBySeason(year, race).then(
                 (data: any) => data.MRData.DriverTable.Drivers
             );
+        },
+        async driverInformation(_:void, { id }, { dataSources } ) {
+            return await dataSources.drivers.getDriverInformation(id).then(
+                (data: any) => data.MRData.DriverTable.Drivers[0]
+            );
         }
     }
 };

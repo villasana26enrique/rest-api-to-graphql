@@ -1,5 +1,5 @@
 import { IResolvers } from "graphql-tools";
-import { getWikipediaUrlMobile } from '../lib/utils';
+import { getWikipediaUrlMobile, getAge } from '../lib/utils';
 
 const type : IResolvers = {
     Season: {
@@ -23,7 +23,8 @@ const type : IResolvers = {
     Driver: {
         id: parent => parent.driverId,
         name: parent => `${parent.givenName} ${parent.familyName}`,
-        urlMobile: parent => getWikipediaUrlMobile(parent.url)
+        urlMobile: parent => getWikipediaUrlMobile(parent.url),
+        age: parent => getAge(parent.dateOfBirth)
     }
 };
 

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function getWikipediaUrlMobile(url:string) : string {
     return (url !== undefined) ? url.replace("wikipedia","m.wikipedia") : "";
 }
@@ -18,4 +20,8 @@ export function roundCheck(round: number){
         round = 1;
     }
     return round;
+}
+
+export function getAge(dateOfBirth: string): number {
+    return moment().diff(dateOfBirth, 'years');
 }
