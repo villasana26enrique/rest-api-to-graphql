@@ -1,58 +1,99 @@
 type Query {
-    "Obtiene el listado de todas las Temporadas"
+    """
+      Obtiene el listado de todas las Temporadas
+      Solo se muestran las temporadas desde 1950
+    """
     seasonList: [Season!]!
     "Muestra las carreras que ocurrieron por año"
     racesByYear(year: String!): [Race!]!
     "Muestra la información de una carrera en especifico"
     selectRace(year: String!, round: Int!): Race
-    "Lista de Pilotos. Opcionalmente se pueden obtener los pilotos de forma paginada"
+    "Historico de Pilotos. Opcionalmente se pueden obtener los pilotos de forma paginada"
     listOfDrivers(pageElements: Int, page: Int): [Driver!]!
-    "Lista de Pilotos por Temporada. De manera opcional se pueden obtener los pilotos de una carrera en especifico de esa temporada"
+    """
+      Lista de Pilotos por Temporada. De manera opcional 
+      se pueden obtener los pilotos de una carrera en especifico
+      de esa temporada 
+    """
     driversBySeason(year: String!, race: Int): [Driver!]!
     "información de un Piloto seleccionado por ID"
     driverInformation(id: ID!): Driver 
 }
 
+"información de la Temporada"
 type Season{
-    year: String!
-    url: String!
-    urlMobile: String!
+  "Año de la temporada"
+  year: String!
+  "información de Wikipedia"
+  url: String!
+  "información de Wikipedia para Moviles"
+  urlMobile: String!
 }
 
+"información de la carrera"
 type Race {
-    season: String!
-    round: String!
-    url: String!
-    urlMobile: String!
-    name: String!
-    circuit: Circuit!
-    date: String!
-    time: String
+  "Año de la temporada"
+  season: String!
+  "Numero de la carrera de esa temporada"
+  round: String!
+  "información de Wikipedia"
+  url: String!
+  "información de Wikipedia para Moviles"
+  urlMobile: String!
+  "Nombre de la carrera"
+  name: String!
+  "Nombre del Circuito"
+  circuit: Circuit!
+  "Fecha de la carrera"
+  date: String!
+  "Duración de la carrera"
+  time: String
 }
 
+"Locación del Circuito"
 type Location {
+  "Coordenada Latitud del Circuito"
   lat: String!
+  "Coordenada Longitud del Circuito"
   lng: String!
+  "Localidad donde está ubicado"
   locality: String!
+  "País donde esta ubicado"
   country: String!
 }
 
+"información del circuito"
 type Circuit {
+  "Identificador del Circuito"
   id: ID!
+  "información de Wikipedia"
   url: String!
+  "información de Wikipedia para Moviles"
   urlMobile: String!
+  "Nombre del Circuito"
   name: String!
+  "información del Circuito"
   location: Location! 
 }
 
+"información del Piloto"
 type Driver {
+  "Identificador del Piloto"
   id: ID!
+  "información de Wikipedia"
   url: String!
+  "información de Wikipedia para Moviles"
   urlMobile: String!
+  "Nombre"
   name: String!
+  "Fecha de Nacimiento"
   dateOfBirth: String!
+  "Edad"
   age: Int!
+  "Nacionalidad"
   nationality: String!
+  "Codigo de F1"
   code: String
+  "Número de F1"
   permanentNumber: String
 }
