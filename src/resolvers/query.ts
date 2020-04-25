@@ -1,3 +1,4 @@
+import { dataSources } from './../data/index';
 import { IResolvers } from "graphql-tools";
 
 const query : IResolvers = {
@@ -17,6 +18,11 @@ const query : IResolvers = {
         async selectRace(_: void, { year, round }, { dataSources } ) {
             return await dataSources.races.getRaceByYear( year, round ).then(
                 (data:any) => data.MRData.RaceTable.Races[0]
+            );
+        },
+        async listOfDrivers( _: void, __: void, { dataSources } ) {
+            return await dataSources.drivers.getDrivers().then(
+                (data: any) => data.MRData.DriverTable.Drivers
             );
         }
     }
