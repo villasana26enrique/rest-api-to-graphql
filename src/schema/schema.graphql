@@ -24,6 +24,8 @@ type Query {
       Listado Historico de Circuitos. Opcionalmente se pueden obtener de forma paginada
     """ 
     listOfCircuits(pageElements: Int, page: Int): [Circuit!]!
+    "Muestra la información de una circuito en especifico"
+    selectCircuit(id: ID!): Circuit
 }
 
 "información de la Temporada"
