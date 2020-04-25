@@ -5,8 +5,8 @@ type Query {
     racesByYear(year: String!): [Race!]!
     "Muestra la información de una carrera en especifico"
     selectRace(year: String!, round: Int!): Race
-    "Lista de Pilotos"
-    listOfDrivers: [Driver!]!
+    "Lista de Pilotos (Con paginación opcional)"
+    listOfDrivers(pageElements: Int, page: Int): [Driver!]!
 }
 
 type Season{
@@ -42,10 +42,10 @@ type Circuit {
 }
 
 type Driver {
-  driverId: String!
+  id: String!
   url: String!
-  givenName: String!
-  familyName: String!
+  urlMobile: String!
+  name: String!
   dateOfBirth: String!
   nationality: String!
   code: String
