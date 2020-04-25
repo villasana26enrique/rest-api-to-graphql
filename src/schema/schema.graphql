@@ -20,6 +20,10 @@ type Query {
     driverInformation(id: ID!): Driver 
     "Clasificación General de Pilotos Por Temporada"
     driversStandingBySeason(year: String!): [DriverStanding!]!
+    """
+      Listado Historico de Circuitos. Opcionalmente se pueden obtener de forma paginada
+    """ 
+    listOfCircuits(pageElements: Int, page: Int): [Circuit!]!
 }
 
 "información de la Temporada"
@@ -102,11 +106,17 @@ type Driver {
 
 "información de la Clasificación"
 type DriverStanding {
+  "Posicion de la Clasificación"
   position: String!
+  "Posicion de la Clasificación"
   positionText: String!
+  "Puntos logrados"
   points: String!
+  "Victorias"
   wins: String!
+  "información del Piloto"
   driver: Driver!
+  "información del Constructor"
   constructors: [Constructor!]!
 }
 
