@@ -5,10 +5,10 @@ type Query {
     racesByYear(year: String!): [Race!]!
     "Muestra la información de una carrera en especifico"
     selectRace(year: String!, round: Int!): Race
-    "Lista de Pilotos (Con paginación opcional)"
+    "Lista de Pilotos. Opcionalmente se pueden obtener los pilotos de forma paginada"
     listOfDrivers(pageElements: Int, page: Int): [Driver!]!,
-    "Lista de Pilotos por Temporada"
-    driversBySeason(year: String!): [Driver!]!
+    "Lista de Pilotos por Temporada. De manera opcional se pueden obtener los pilotos de una carrera en especifico de esa temporada"
+    driversBySeason(year: String!, race: Int): [Driver!]! 
 }
 
 type Season{

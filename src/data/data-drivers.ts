@@ -21,9 +21,14 @@ export class DriversData extends F1 {
         });
     }
 
-    async getDriversBySeason(year: string) {
-        return await this.get(`${year}/drivers.json`, {
+    async getDriversBySeason(year: string, race?: number) {
+        if (!race) {
+            return await this.get(`${year}/drivers.json`, {
+                cacheOptions: { ttl: 60 }
+            });
+        }
+        return await this.get(`${year}/${race}/drivers.json`, {
             cacheOptions: { ttl: 60 }
-        });
+        });  
     }
 }

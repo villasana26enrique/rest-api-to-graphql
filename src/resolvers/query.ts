@@ -25,8 +25,8 @@ const query : IResolvers = {
                 (data: any) => data.MRData.DriverTable.Drivers
             );
         },
-        async driversBySeason(_:void, { year }, { dataSources } ) {
-            return await dataSources.drivers.getDriversBySeason(year).then(
+        async driversBySeason(_:void, { year, race }, { dataSources } ) {
+            return await dataSources.drivers.getDriversBySeason(year, race).then(
                 (data: any) => data.MRData.DriverTable.Drivers
             );
         }
