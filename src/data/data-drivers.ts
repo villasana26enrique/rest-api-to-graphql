@@ -20,4 +20,10 @@ export class DriversData extends F1 {
             cacheOptions: { ttl: 60 }
         });
     }
+
+    async getDriversBySeason(year: string) {
+        return await this.get(`${year}/drivers.json`, {
+            cacheOptions: { ttl: 60 }
+        });
+    }
 }

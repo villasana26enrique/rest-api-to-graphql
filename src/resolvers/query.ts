@@ -20,8 +20,13 @@ const query : IResolvers = {
                 (data:any) => data.MRData.RaceTable.Races[0]
             );
         },
-        async listOfDrivers( _: void, { pageElements, page }, { dataSources } ) {
+        async listOfDrivers(_: void, { pageElements, page }, { dataSources } ) {
             return await dataSources.drivers.getDrivers(pageElements, page).then(
+                (data: any) => data.MRData.DriverTable.Drivers
+            );
+        },
+        async driversBySeason(_:void, { year }, { dataSources } ) {
+            return await dataSources.drivers.getDriversBySeason(year).then(
                 (data: any) => data.MRData.DriverTable.Drivers
             );
         }
