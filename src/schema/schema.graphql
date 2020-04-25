@@ -18,6 +18,8 @@ type Query {
     driversBySeason(year: String!, race: Int): [Driver!]!
     "información de un Piloto seleccionado por ID"
     driverInformation(id: ID!): Driver 
+    "Clasificación General de Pilotos Por Temporada"
+    driversStandingBySeason(year: String!): [DriverStanding!]!
 }
 
 "información de la Temporada"
@@ -96,4 +98,28 @@ type Driver {
   code: String
   "Número de F1"
   permanentNumber: String
+}
+
+"información de la Clasificación"
+type DriverStanding {
+  position: String!
+  positionText: String!
+  points: String!
+  wins: String!
+  driver: Driver!
+  constructors: [Constructor!]!
+}
+
+"información del Constructor"
+type Constructor {
+  "Identificador del Constructor"
+  id: ID!
+  "información de Wikipedia"
+  url: String!
+  "información de Wikipedia para Moviles"
+  urlMobile: String!
+  "Nombre del Constructor"
+  name: String!
+  "Natcionalidad del Constructor"
+  nationality: String!
 }

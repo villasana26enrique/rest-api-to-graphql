@@ -37,4 +37,10 @@ export class DriversData extends F1 {
             cacheOptions: { ttl: 60 }
         });
     }
+
+    async getDriversStanding(year: string) {
+        return await this.get(`${year}/driverStandings.json`, {
+            cacheOptions: { ttl: 60 }
+        });
+    }
 }

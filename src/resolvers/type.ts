@@ -25,6 +25,14 @@ const type : IResolvers = {
         name: parent => `${parent.givenName} ${parent.familyName}`,
         urlMobile: parent => getWikipediaUrlMobile(parent.url),
         age: parent => getAge(parent.dateOfBirth)
+    },
+    DriverStanding: {
+        driver: parent => parent.Driver,
+        constructors: parent => parent.Constructors
+    },
+    Constructor: {
+        id: parent => parent.constructorId,
+        urlMobile: parent => getWikipediaUrlMobile(parent.url)
     }
 };
 
