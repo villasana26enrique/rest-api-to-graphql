@@ -25,6 +25,10 @@ const servidor = new ApolloServer({
 });
 
 servidor.applyMiddleware({app});
+app.use('/', expressPlayground({
+    endpoint: '/graphql'
+}));
+
 app.get('/', expressPlayground({
     endpoint: '/graphql'
 }));
